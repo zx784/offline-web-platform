@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline Web Platform</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
+</head>
+<body>
+
+  <h1>Welcome to the Offline Web Platform</h1>
+  <p>This page works even when you're offline!</p>
+  <p>Here is some content that you can access offline.</p>
+
+  <script src="app.js"></script> <!-- Your JS file -->
+
+  <!-- Register the service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./scripts/service-worker.js') // Adjust the path as needed
+          .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
